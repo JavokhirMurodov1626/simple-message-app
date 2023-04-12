@@ -37,9 +37,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.fetchMessages(); // fetch messages when the component is initialized
-    // setInterval(() => {
-    //   this.fetchMessages(); // fetch messages every 5 seconds
-    // }, 5000);
+    setInterval(() => {
+      this.fetchMessages(); // fetch messages every 5 seconds
+    }, 5000);
   }
 
   sendSearchData(event: Event) {
