@@ -1,0 +1,15 @@
+<div class="backdrop"></div>
+<div class="alert-box">
+    <form (ngSubmit)="onSubmit()" #form="ngForm">
+        <div class="alert-box__body mb-3">
+            <label for="user-name" class="user-name mb-3">User name</label>
+            <input type="text" name="userName" ngModel required class="form-control"
+                placeholder="Enter your name" #userNameInput="ngModel">
+            <span class="name-error-message" *ngIf="userNameInput.invalid && userNameInput.touched" >Please enter your name !</span>
+        </div>
+ 
+        <div class="alert-box__bottom">
+            <button class="btn btn-primary submit-btn" [disabled]="userNameInput.invalid" type="submit">Submit</button>
+        </div>
+    </form>
+</div>

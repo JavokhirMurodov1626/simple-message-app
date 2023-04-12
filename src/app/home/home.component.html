@@ -1,0 +1,72 @@
+<div class="container-fluid">
+    <div class="container">
+        <button class="btn btn-warning mt-4" (click)="logOut()" >Log Out</button>
+        <h1 class="text-primary text-center mb-3 mt-5">Simple Message App</h1>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <form class="col-6 mb-5" (ngSubmit)="onSubmit()" #form="ngForm">
+
+                    <div class="mb-3">
+                        <label for="recipient-name" class="form-label fw-bold">Recipient Name:</label>
+                        <input 
+                        type="text" 
+                        class="form-control" 
+                        id="recipient-name" 
+                        placeholder="Recipient name"
+                        [(ngModel)]="selectedUserName"
+                        name="recipientName"
+                        (keyup)="sendSearchData($event)"
+                        >
+                    </div>
+                    <span class="search-results" *ngIf="users.length>0" >
+                        <p *ngIf="users.length<1 && hasQuery">Sorry, Nothing found!</p>
+                        <p *ngFor="let user of users" (click)="selectSearchedUser(user.name)">
+                            {{user.name}}
+                        </p>
+                        <hr>
+                    </span>
+
+                    <div class="mb-3">
+                        <label for="message-title" class="form-label fw-bold">Message Title</label>
+                        <input 
+                        type="text" 
+                        class="form-control" 
+                        id="message-title" 
+                        placeholder="Message title"
+                        ngModel
+                        name="messageTitle"
+                        >
+
+                    </div>
+
+                    <div class="mb-3">
+                        <textarea 
+                        class="form-control" 
+                        placeholder="Send a message" 
+                        id="message-content"
+                        ngModel
+                        name="messageContent"
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mb-3" [disabled]="!form.valid">Send Message</button>
+
+                </form>
+            </div>
+
+            <div class="col-12 d-flex flex-column align-items-center ">
+                <h3 class="mb-3">List of Messages to current user</h3>
+                <p *ngIf="!messages.length">You have no messages yet!</p>
+                <ol class="list-group list-group-numbered col-6" *ngIf="!!messages.length" >
+                    <li class="list-group-item d-flex gap-2" *ngFor="let message of messages">
+                        <p class="message-content">
+                            {{message.content}}
+                        </p>
+                        <p class="message_created_time">{{message.createdAt}}</p>
+                    </li>
+
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>

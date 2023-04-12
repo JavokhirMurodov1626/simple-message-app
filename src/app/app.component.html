@@ -1,1 +1,4 @@
-<h1>Hello world</h1>
+
+<app-modal (submitModal)="handleModal($event)" *ngIf="showModal"></app-modal>
+
+<app-home (logOutUser)="handleLogOut()" *ngIf="!showModal"></app-home>
