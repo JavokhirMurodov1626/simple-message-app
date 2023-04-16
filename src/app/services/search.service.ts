@@ -15,7 +15,7 @@ export class SearchService {
   }
 
   getSearchedUsers(inputValue:string){
-    return this.http.post<User[]>('http://localhost:3000/users',{
+    return this.http.post<User[]>('https://simple-message-app.onrender.com/users',{
     inputValue
     })
   }

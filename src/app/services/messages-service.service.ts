@@ -16,7 +16,7 @@ export class MessagesService {
   constructor(private http: HttpClient) {}
 
   handleSendMessage(sentMessage: SentMessage) {
-    return this.http.post('http://localhost:3000/message',sentMessage).pipe(catchError(this.handleError));
+    return this.http.post('https://simple-message-app.onrender.com/message',sentMessage).pipe(catchError(this.handleError));
   }
 
   handleError(error:HttpErrorResponse){

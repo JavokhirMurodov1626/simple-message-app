@@ -30,7 +30,7 @@ export class ModalRequestService {
     const parsedSenderName = senderName ? JSON.parse(senderName) : null;
 
     return this.http
-      .post<ModalResponseData>('http://localhost:3000/user', parsedSenderName)
+      .post<ModalResponseData>('https://simple-message-app.onrender.com/user', parsedSenderName)
       .pipe(
         map((response) => {
           const updatedMessages = response.messages.map((message) => {
